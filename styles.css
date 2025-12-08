@@ -128,6 +128,9 @@ li {
       padding: 124px 0;
     }
   }
+  .mobile-nav {
+    display: none;
+  }
 }
 main {
   max-width: 969px;
@@ -245,6 +248,7 @@ main {
         color: var(--blue);
         font-size: 24px;
         margin-bottom: 8px;
+        white-space: nowrap;
       }
     }
   }
@@ -261,6 +265,7 @@ footer {
     max-width: 1270px;
     width: 100%;
     margin: auto;
+    padding: 0 24px;
     .logo-section {
       display: flex;
       align-items: center;
@@ -300,6 +305,156 @@ footer {
             text-transform: uppercase;
           }
         }
+      }
+    }
+  }
+}
+@media only screen and (max-width: 768px) {
+  .hero-section {
+    background-size: 1510px 366px;
+    background-position: left top;
+    padding: 60px 24px 0 24px;
+    header {
+      .logo-section {
+        .logo {
+          width: 50px;
+        }
+        h1.title {
+          font-size: 24px;
+        }
+      }
+    }
+  }
+  main {
+    max-width: 385px;
+  }
+  footer {
+    .container {
+      .logo-section {
+        .logo {
+          width: 50px;
+        }
+        h1.title {
+          font-size: 24px;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .hero-section {
+    background-size: 865px 268px;
+    section.about {
+      padding-top: 150px;
+      h1 {
+        font-size: 70px;
+        span {
+          display: block;
+        }
+      }
+    }
+    header {
+      nav {
+        display: none;
+      }
+      .mobile-nav {
+        display: block;
+        i {
+          color: var(--blue);
+        }
+      }
+    }
+  }
+  main {
+    max-width: 205px;
+    .vertical-line {
+      height: 120px;
+    }
+    .projects-start {
+      p {
+        white-space: nowrap;
+      }
+    }
+    .box {
+      height: 260px;
+      &.half-right {
+        height: 120px;
+      }
+      .project-preview {
+        .project-description {
+          p {
+            white-space: nowrap;
+          }
+        }
+        &.zyra {
+          left: -47px;
+          .project-img {
+            width: 90px;
+            img {
+              object-fit: contain;
+              max-height: 100%;
+            }
+          }
+        }
+        &.racktrack {
+          right: -110px;
+          .project-img {
+            width: 228px;
+          }
+        }
+        &.zine {
+          left: -75px;
+          .project-img {
+            width: 130px;
+          }
+        }
+        &.ferreira-house {
+          left: -96px;
+          .project-img {
+            width: 160px;
+          }
+        }
+        &.mchouse {
+          right: -77px;
+          .project-img {
+            width: 160px;
+          }
+        }
+        &.winelabel {
+          right: -28px;
+          .project-img {
+            width: 62px;
+            height: 200px;
+            img {
+              object-fit: contain;
+              max-height: 100%;
+            }
+          }
+        }
+      }
+    }
+  }
+  .quick-links {
+    flex-direction: column;
+    gap: 32px !important;
+    padding-bottom: 50px !important;
+  }
+  .plus {
+    display: none;
+  }
+  .about {
+    .flex {
+      flex-direction: column;
+    }
+  }
+  footer {
+    padding: 60px 0;
+    .container {
+      flex-direction: column-reverse;
+      gap: 24px;
+      nav {
+        width: 70%;
       }
     }
   }
