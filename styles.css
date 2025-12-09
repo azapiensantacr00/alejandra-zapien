@@ -3,6 +3,15 @@
   --yellow: #ffa812;
   --blue: #219ebc;
   --text: #121212;
+  --radius: 16px;
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  --border: 1px solid rgba(0, 0, 0, 0.08);
+  --bg: #ffffff;
+  --ink: #111111;
+  --muted: #6b7280;
+  --accent: #111111;
+  --dot: 10px;
+  --gap: 14px;
 }
 /* boilerplate styles */
 * {
@@ -186,6 +195,7 @@ main {
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
+      cursor: pointer;
       .project-description {
         p.title {
           font-size: 32px;
@@ -457,5 +467,193 @@ footer {
         width: 70%;
       }
     }
+  }
+}
+
+/* modal styling */
+.modal {
+  display: none;
+}
+.modal.open {
+  display: block;
+}
+.carousel {
+  border: var(--border);
+  padding: 18px;
+  position: absolute;
+  top: 0;
+  background-color: #eeeeee;
+  border-radius: 12px;
+  transform: translateX(217px);
+  z-index: 9;
+  max-width: 600px;
+  box-shadow: 28px 28px 56px #727272, -28px -28px 56px #e3e3e3;
+  &::after {
+    content: "";
+    display: block;
+    position: absolute;
+    left: -19px;
+    top: 68px;
+    width: 0;
+    height: 0;
+    border-top: 20px solid transparent;
+    border-bottom: 20px solid transparent;
+    border-right: 20px solid #eeeeee;
+  }
+}
+
+/* Header row */
+.carousel__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.carousel__title {
+  font-size: 1.1rem;
+  font-weight: 650;
+  margin: 0;
+}
+
+/* Viewport masks overflow */
+.carousel__viewport {
+  overflow: hidden;
+  border-radius: calc(var(--radius) - 6px);
+  outline: none; /* we'll handle focus style below */
+  position: relative;
+}
+
+.carousel__viewport:focus-visible {
+  box-shadow: 0 0 0 3px rgba(17, 17, 17, 0.2);
+}
+
+/* Track holds slides in a row */
+.carousel__track {
+  display: flex;
+  gap: var(--gap);
+  will-change: transform;
+  transition: transform 300ms ease;
+  padding: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .carousel__track {
+    transition: none;
+  }
+}
+
+/* Each slide */
+.carousel__slide {
+  flex: 0 0 100%;
+  min-width: 0;
+  border-radius: 14px;
+  display: flex;
+  gap: 24px;
+  .prev-img {
+    max-width: 230px;
+    min-width: 230px;
+  }
+}
+
+/* Example content styling */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.75rem;
+  color: var(--muted);
+  background: #f2f3f7;
+  padding: 4px 10px;
+  border-radius: 999px;
+  width: fit-content;
+}
+
+.slide-title {
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+.slide-text {
+  margin: 0;
+  color: #333;
+  line-height: 1.5;
+}
+
+/* Buttons */
+.carousel__btn {
+  appearance: none;
+  border: var(--border);
+  background: #fff;
+  color: var(--ink);
+  padding: 8px 12px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: transform 120ms ease, background 120ms ease, opacity 120ms ease;
+}
+
+.carousel__btn:hover {
+  background: #f6f6f9;
+  transform: translateY(-1px);
+}
+
+.carousel__btn:active {
+  transform: translateY(0);
+}
+
+.carousel__btn[disabled] {
+  opacity: 0.45;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.carousel__controls {
+  display: flex;
+  gap: 8px;
+}
+
+/* Dots */
+.carousel__dots {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  margin-top: 12px;
+  flex-wrap: wrap;
+}
+
+.carousel__dot {
+  width: var(--dot);
+  height: var(--dot);
+  border-radius: 999px;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  background: #fff;
+  cursor: pointer;
+  padding: 0;
+  transition: transform 120ms ease, background 120ms ease,
+    border-color 120ms ease;
+}
+
+.carousel__dot:hover {
+  transform: scale(1.08);
+}
+
+.carousel__dot[aria-current="true"] {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+/* Optional: make it 2-up on wider screens */
+@media (min-width: 820px) {
+  .carousel[data-slides-per-view="2"] .carousel__slide {
+    flex-basis: calc(50% - (var(--gap) / 2));
+  }
+}
+
+/* Optional: make it 3-up on very wide screens */
+@media (min-width: 1100px) {
+  .carousel[data-slides-per-view="3"] .carousel__slide {
+    flex-basis: calc(33.333% - (2 * var(--gap) / 3));
   }
 }
