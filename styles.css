@@ -486,7 +486,7 @@ footer {
   border-radius: 12px;
   transform: translateX(217px);
   z-index: 9;
-  max-width: 600px;
+  max-width: 700px;
   box-shadow: 28px 28px 56px #727272, -28px -28px 56px #e3e3e3;
   &::after {
     content: "";
@@ -590,6 +590,11 @@ footer {
   padding: 8px 12px;
   border-radius: 12px;
   text-transform: uppercase;
+  width: 100%;
+  cursor: pointer;
+  a {
+    color: var(--yellow);
+  }
 }
 /* Example content styling */
 .badge {
@@ -690,4 +695,59 @@ footer {
   .carousel[data-slides-per-view="3"] .carousel__slide {
     flex-basis: calc(33.333% - (2 * var(--gap) / 3));
   }
+}
+
+.image-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 16px;
+  .img-slide {
+    width: 90px;
+    transition: transform 300ms cubic-bezier(0.2, 0.8, 0.2, 1),
+      filter 300ms cubic-bezier(0.2, 0.8, 0.2, 1),
+      opacity 300ms cubic-bezier(0.2, 0.8, 0.2, 1);
+    will-change: transform;
+    transform: scale(1);
+    transform-origin: top left;
+
+    &.multi-line:nth-last-of-type(-n + 4) {
+      transform-origin: bottom left;
+    }
+
+    img {
+      height: 100%;
+      width: 100%;
+      object-fit: contain;
+    }
+
+    &:hover {
+      transform: scale(2);
+      filter: saturate(2);
+      z-index: 2;
+      background-color: white;
+      box-shadow: 0 0 4px 10px #c4c4c411;
+    }
+  }
+
+  /* 👇 When gallery is hovered, soften everything... */
+  &:hover .img-slide {
+    filter: saturate(0.9);
+    opacity: 0.55;
+  }
+
+  /* 👇 ...except the one you're hovering */
+  &:hover .img-slide:hover {
+    filter: saturate(2);
+    opacity: 1;
+  }
+
+  /* 👇 Optional: add blur only to non-hover items */
+  &:hover .img-slide:not(:hover) {
+    filter: blur(2px) saturate(0.9);
+  }
+}
+.backdrop {
+  position: fixed;
+  inset: 0;
 }

@@ -1,3 +1,16 @@
+// open modal
+const zyraTrigger = document.getElementById("zyra");
+const zyraModal = document.getElementById("zyra-modal");
+const zyraCard = zyraModal.querySelector(".backdrop");
+
+zyraTrigger.addEventListener("click", () => {
+  zyraModal.classList.toggle("open");
+});
+
+// close when clicking outside the card
+zyraCard.addEventListener("click", (e) => {
+  zyraModal.classList.remove("open");
+});
 class ControlledCarousel {
   constructor(root, options = {}) {
     this.root = root;
