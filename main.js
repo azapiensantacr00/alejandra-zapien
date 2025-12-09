@@ -1,15 +1,21 @@
 // open modal
 const zyraTrigger = document.getElementById("zyra");
 const zyraModal = document.getElementById("zyra-modal");
-const zyraCard = zyraModal.querySelector(".backdrop");
+const racktracTrigger = document.getElementById("racktrack");
+const racktracModal = document.getElementById("racktrack-modal");
+const backdrop = zyraModal.querySelector(".backdrop");
 
 zyraTrigger.addEventListener("click", () => {
   zyraModal.classList.toggle("open");
 });
+racktracTrigger.addEventListener("click", () => {
+  racktracModal.classList.toggle("open");
+});
 
 // close when clicking outside the card
-zyraCard.addEventListener("click", (e) => {
+backdrop.addEventListener("click", () => {
   zyraModal.classList.remove("open");
+  racktracModal.classList.remove("open");
 });
 class ControlledCarousel {
   constructor(root, options = {}) {

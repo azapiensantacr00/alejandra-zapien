@@ -501,6 +501,18 @@ footer {
     border-right: 20px solid #eeeeee;
   }
 }
+#racktrack-modal {
+  .carousel {
+    left: -10%;
+    transform: none;
+     &::after {
+      left: initial;
+      right: -19px;
+      border-left: 20px solid #eeeeee;
+      border-right: 0;
+    }
+  }
+}
 
 /* Header row */
 .carousel__head {
