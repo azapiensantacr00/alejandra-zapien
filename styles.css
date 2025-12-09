@@ -512,9 +512,11 @@ footer {
 }
 
 .carousel__title {
-  font-size: 1.1rem;
+  font-size: 2.5rem;
   font-weight: 650;
   margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 2px;
 }
 
 /* Viewport masks overflow */
@@ -555,8 +557,40 @@ footer {
     max-width: 230px;
     min-width: 230px;
   }
+  .prev-text {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    h2 {
+      letter-spacing: 1.5px;
+      font-size: 22px;
+      font-weight: normal;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    p,
+    li {
+      letter-spacing: 1px;
+      font-weight: 300;
+    }
+    ul {
+      padding-left: 1rem;
+      li {
+        list-style: circle;
+      }
+    }
+  }
 }
-
+.primary-btn {
+  background-color: #007b98;
+  color: var(--yellow);
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: 1.2px;
+  padding: 8px 12px;
+  border-radius: 12px;
+  text-transform: uppercase;
+}
 /* Example content styling */
 .badge {
   display: inline-flex;
