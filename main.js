@@ -3,7 +3,10 @@ const zyraTrigger = document.getElementById("zyra");
 const zyraModal = document.getElementById("zyra-modal");
 const racktracTrigger = document.getElementById("racktrack");
 const racktracModal = document.getElementById("racktrack-modal");
-const backdrop = zyraModal.querySelector(".backdrop");
+const zineTrigger = document.getElementById("zine");
+const zineModal = document.getElementById("zine-modal");
+const backdrop = document.querySelector(".backdrop");
+const zinebackdrop = document.getElementById("zine-backdrop");
 
 zyraTrigger.addEventListener("click", () => {
   zyraModal.classList.toggle("open");
@@ -11,12 +14,18 @@ zyraTrigger.addEventListener("click", () => {
 racktracTrigger.addEventListener("click", () => {
   racktracModal.classList.toggle("open");
 });
+zineTrigger.addEventListener("click", () => {
+  zineModal.classList.toggle("open");
+});
 
 // close when clicking outside the card
 backdrop.addEventListener("click", () => {
   zyraModal.classList.remove("open");
   racktracModal.classList.remove("open");
 });
+// zineModal.addEventListener("click", () => {
+//   zineModal.classList.remove("open");
+// });
 class ControlledCarousel {
   constructor(root, options = {}) {
     this.root = root;
@@ -196,4 +205,71 @@ const carousel = new ControlledCarousel(carouselEl, {
       block: "center",
     });
   },
+});
+
+// zine modal
+const nextPage = document.getElementById("next-page");
+const prevPage = document.getElementById("prev-page");
+
+const page1 = document.getElementById("pg1");
+const page2 = document.getElementById("pg2");
+const page3 = document.getElementById("pg3");
+const page4 = document.getElementById("pg4");
+const page5 = document.getElementById("pg5");
+const page6 = document.getElementById("pg6");
+const page7 = document.getElementById("pg7");
+const page8 = document.getElementById("pg8");
+const page9 = document.getElementById("pg9");
+const page10 = document.getElementById("pg10");
+const page11 = document.getElementById("pg11");
+const page12 = document.getElementById("pg12");
+const page13 = document.getElementById("pg13");
+const page14 = document.getElementById("pg14");
+
+const pairs = [
+  [page1, page2],
+  [page3, page4],
+  [page5, page6],
+  [page7, page8],
+  [page9, page10],
+  [page11, page12],
+  [page13, page14],
+];
+
+let currIdx = 0;
+
+function flipPair(frontPage, backPage, delay = 500) {
+  frontPage.classList.add("flip");
+  setTimeout(() => {
+    backPage.classList.add("flipback");
+  }, delay);
+}
+
+function unflipPair(frontPage, backPage, delay = 500) {
+  // hide the revealed page first
+  backPage.classList.remove("flipback");
+  // then bring back the front page after delay
+  setTimeout(() => {
+    frontPage.classList.remove("flip");
+  }, delay);
+}
+
+nextPage.addEventListener("click", () => {
+  if (currIdx >= pairs.length) return;
+
+  const [front, back] = pairs[currIdx];
+  flipPair(front, back, 500);
+
+  currIdx++;
+  console.log("currIdx:", currIdx);
+});
+prevPage.addEventListener("click", () => {
+  if (currIdx <= 0) return;
+
+  currIdx--;
+
+  const [front, back] = pairs[currIdx];
+  unflipPair(front, back, 500);
+
+  console.log("currIdx:", currIdx);
 });
