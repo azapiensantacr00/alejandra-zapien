@@ -484,6 +484,7 @@ footer {
   bottom: 5vh;
   left: 15vw;
   right: 15vw;
+  max-width: 720px;
   background-color: #c5c5c5;
   .carousel__head {
     padding: 12px 24px 0 24px;
@@ -542,6 +543,13 @@ footer {
   margin: 0;
   text-transform: uppercase;
   letter-spacing: 2px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  i {
+    font-size: 22px;
+    cursor: pointer;
+  }
 }
 
 /* Viewport masks overflow */
